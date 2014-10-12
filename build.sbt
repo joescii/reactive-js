@@ -1,4 +1,4 @@
-name := "coffee-demo"
+name := "reactive-js"
 
 version := "0.0.1"
 
