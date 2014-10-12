@@ -1,0 +1,492 @@
+<!doctype html>
+
+<!--
+
+    Welcome to the light side of the source, young padawan.
+
+    One step closer to learn something interesting you are...
+
+                               ____                  
+                            _.' :  `._               
+                        .-.'`.  ;   .'`.-.           
+               __      / : ___\ ;  /___ ; \      __  
+             ,'_ ""=-.:__;".-.";: :".-.":__;.-="" _`,
+             :' `.t""=-.. '<@.`;_  ',@:` ..-=""j.' `;
+                  `:-.._J '-.-'L__ `-.-' L_..-;'     
+                    "-.__ ;  .-"  "-.  : __.-"       
+                        L ' /.======.\ ' J           
+                         "-.   "__"   .-"            
+                        __.l"-:_JL_;-";.__           
+                     .-j/'.;  ;""""  / .'\"-.        
+                   .' /:`. "-.:     .-" .';  `.      
+                .-"  / ;  "-. "-..-" .-"  :    "-.   
+             .+"-.  : :      "-.__.-"      ;-._   \  
+             ; \  `.; ;                    : : "+. ; 
+             :  ;   ; ;                    : ;  : \: 
+             ;  :   ; :                    ;:   ;  : 
+            : \  ;  :  ;                  : ;  /  :: 
+            ;  ; :   ; :                  ;   :   ;: 
+            :  :  ;  :  ;                : :  ;  : ; 
+            ;\    :   ; :                ; ;     ; ; 
+            : `."-;   :  ;              :  ;    /  ; 
+             ;    -:   ; :              ;  : .-"   : 
+             :\     \  :  ;            : \.-"      : 
+              ;`.    \  ; :            ;.'_..-=  / ; 
+              :  "-.  "-:  ;          :/."      .'  :
+               \         \ :          ;/  __        :
+                \       .-`.\        /t-""  ":-+.   :
+                 `.  .-"    `l    __/ /`. :  ; ; \  ;
+                   \   .-" .-"-.-"  .' .'j \  /   ;/ 
+                    \ / .-"   /.     .'.' ;_:'    ;  
+                     :-""-.`./-.'     /    `.___.'   
+                           \ `t  ._  /               
+                            "-.t-._:'                
+
+-->
+
+<!--
+    
+    So you'd like to know how to use impress.js?
+    
+    You've made the first, very important step - you're reading the source code.
+    And that's how impress.js presentations are built - with HTML and CSS code.
+    
+    Believe me, you need quite decent HTML and CSS skills to be able to use impress.js effectively.
+    And what is even more important, you need to be a designer, too, because there are no default
+    styles for impress.js presentations, there is no default or automatic layout for them.
+    
+    You need to design and build it by hand.
+    
+    So...
+    
+    Would you still like to know how to use impress.js?
+    
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>A Sip of CoffeeScript | by Joe Barnes @joescii</title>
+    
+    <meta name="description" content="CoffeeScript is a little language that compiles into JavaScript." />
+    <meta name="author" content="Joe Barnes" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <!--
+        
+        Impress.js doesn't depend on any external stylesheet. Script adds all styles it needs for
+        presentation to work.
+        
+        This style below contains styles only for demo presentation. Browse it to see how impress.js
+        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        you to use them directly in your presentation.
+        
+        Be creative, build your own. We don't really want all impress.js presentations to look the same,
+        do we?
+        
+        When creating your own presentation get rid of this file. Start from scratch, it's fun!
+        
+    -->
+    <link href="css/coffee-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<!--
+    
+    Body element is used by impress.js to set some useful class names, that will allow you to detect
+    the support and state of the presentation in CSS or other scripts.
+    
+    First very useful class name is `impress-not-supported`. This class means, that browser doesn't
+    support features required by impress.js, so you should apply some fallback styles in your CSS.
+    It's not necessary to add it manually on this element. If the script detects that browser is not
+    good enough it will add this class, but keeping it in HTML means that users without JavaScript
+    will also get fallback styles.
+    
+    When impress.js script detects that browser supports all required features, this class name will
+    be removed.
+    
+    The class name on body element also depends on currently active presentation step. More details about
+    it can be found later, when `hint` element is being described.
+    
+-->
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!--
+    
+    Now that's the core element used by impress.js.
+    
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+    
+    You probably won't need it now, but there are some configuration options that can be set on this element.
+    
+    To change the duration of the transition between slides use `data-transition-duration="2000"` giving it
+    a number of ms. It defaults to 1000 (1s).
+    
+    You can also control the perspective with `data-perspective="500"` giving it a number of pixels.
+    It defaults to 1000. You can set it to 0 if you don't want any 3D effects.
+    If you are willing to change this value make sure you understand how CSS perspective works:
+    https://developer.mozilla.org/en/CSS/perspective
+    
+    But as I said, you won't need it for now, so don't worry - there are some simple but interesing things
+    right around the corner of this tag ;)
+    
+-->
+<div class="hint">
+  <p>Use Page Up/Page Down to navigate</p>
+</div>
+
+<div id="impress">
+
+  <div id="coffee-logo" class="visible" data-x="-2000" data-z="350" data-y="-30">
+  </div>
+
+  <div id="title" class="step" data-x="-2000">
+    <h1>A Sip of</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+
+  <div id="joe-barnes" class="step" data-x="-1400" data-y="230" data-z="300">
+    <div class="name">
+      <h1>Joe Barnes</h1>
+      <h2><i><a href="https://twitter.com/joescii">@joescii</a></i></h2>
+    </div>
+    <ul>
+      <li>Primarily Java EE from 2004-2013</li>
+      <li>Began CoffeeScript in August 2013</li>
+      <li>Chose Scala/CoffeeScript at Mentor Graphics late 2013</li>
+    </ul>
+  </div>
+
+  <div id="what" class="step hide-inactive" data-x="-2000" data-y="-15" data-z="1000">
+    What is
+    <span>?</span>
+  </div>
+
+  <div id="little-language" class="step" data-x="-2000" data-y="1500" data-z="1000" data-rotate="90">
+    CoffeeScript is a little language that compiles into JavaScript.
+  </div>
+
+  <div id="one-to-one" class="step" data-x="-2750" data-y="1500" data-z="1000" data-rotate="90">
+    Compiles one-to-one into the equivalent JS, and there is no interpretation at runtime
+  </div>
+
+  <div id="call-js" class="step" data-x="-1600" data-y="-1500" data-z="1180" data-rotate-x="90">
+    You can use any existing JavaScript library seamlessly from CoffeeScript
+  </div>
+
+  <div id="to-js" class="visible" data-x="-1500" data-y="-1300" data-z="1120" data-rotate-x="90">
+    <img src="img/arrow.png">
+  </div>
+
+  <div id="ffi" class="visible" data-x="-1600" data-y="-1500" data-z="1460" data-rotate-x="90">
+    <img class="coffeescript" src="img/coffee.png">
+    <img class="javascript" src="img/javascript-logo.png">
+  </div>
+
+  <div id="to-cs" class="visible" data-x="-1500" data-y="-1300" data-z="1830" data-rotate-x="90">
+    <img src="img/arrow.png">
+  </div>
+
+  <div id="bi-directional" class="step" data-x="-1600" data-y="-1500" data-z="1475" data-rotate-x="90" data-scale="1.3">
+
+  </div>
+
+  <div id="just-js" class="step" data-x="-1600" data-y="-1500" data-z="2100" data-rotate-x="45">
+    It's just javascript!
+  </div>
+
+  <div id="why-bother" class="step" data-x="-1600" data-y="-1500" data-z="2100" data-rotate-x="45" data-rotate-y="90">
+    Ok, so... why bother?
+  </div>
+
+  <div id="evil" class="step" data-x="-1600" data-y="-2000" data-z="3100" data-rotate-x="45" data-rotate-y="180">
+    Javascript is evil.
+  </div>
+
+  <div id="not-the-first" class="step" data-x="-600" data-y="-2000" data-z="3100" data-rotate-x="45" data-rotate-y="180">
+    And I ain't the first to say it.
+  </div>
+
+  <div id="semi-colons" class="step" data-x="-600" data-y="-1500" data-z="3100" data-rotate-y="90">
+    Take for instance, semi-colons...
+    <div>which are semi-required.</div>
+  </div>
+
+  <div id="hello" class="step" data-x="0" data-y="2000" data-z="300">
+    <iframe class="repl" src="repl.html?src=hello"></iframe>
+  </div>
+
+  <div id="big-deal" class="step" data-x="0" data-y="2600" data-z="300">
+    This is a big deal if you're used to languages which don't require semi-colons!
+  </div>
+
+  <div id="optional-syntax" class="step" data-x="0" data-y="3200" data-z="300">
+    In fact, much syntax is optional or unneeded entirely
+  </div>
+
+  <div id="wrapped" class="step" data-x="2250" data-y="2000" data-z="300">
+    <iframe class="repl" src="repl.html?src=wrapped&bare=false"></iframe>
+  </div>
+
+  <div id="bare-on" class="step" data-x="2250" data-y="2600" data-z="300">
+    But we'll keep that turned off for your viewing pleasure
+  </div>
+
+  <div id="other-hazards" class="step" data-x="4500" data-y="2000" data-z="300">
+    <iframe class="repl" src="repl.html?src=hazards"></iframe>
+  </div>
+
+  <div id="nulls" class="step" data-x="5625" data-y="2000" data-z="300">
+    <iframe class="repl" src="repl.html?src=nulls"></iframe>
+  </div>
+
+  <div id="functions" class="step" data-x="6750" data-y="2000" data-z="300">
+    <iframe class="repl" src="repl.html?src=functions"></iframe>
+  </div>
+
+  <div id="expressions" class="step" data-x="6750" data-y="2600" data-z="300">
+    `return` is always implied, because a function body is an <i>expression</i>.
+  </div>
+
+  <div id="digression" class="step" data-x="6750" data-y="2600" data-z="3000">
+    DIGRESSION
+  </div>
+
+  <div id="expression" class="step" data-x="6750" data-y="3200" data-z="3000">
+    What is an expression?
+  </div>
+
+  <div id="statement" class="step" data-x="6260" data-y="3200" data-z="3000">
+    What is a statement?
+  </div>
+
+  <div id="how-what" class="step" data-x="6505" data-y="3700" data-z="3000">
+    How vs. What
+  </div>
+
+  <div id="statement-vs-expression" class="step" data-x="6000" data-y="4700" data-z="3000">
+    <iframe class="repl" src="repl.html?src=expressions"></iframe>
+  </div>
+
+  <div id="express-all-the-things" class="step" data-x="7000" data-y="4700" data-z="3000">
+    <iframe class="repl" src="repl.html?src=express-all-the-things"></iframe>
+  </div>
+
+  <div id="for-comprehension" class="step" data-x="8000" data-y="4700" data-z="3000">
+    <iframe class="repl" src="repl.html?src=forcomp"></iframe>
+  </div>
+
+  <div id="up-arrow" class="visible" data-x="8850" data-y="4700" data-z="3000" data-rotate-x="45">
+    <img src="img/fp/arrow.png">
+  </div>
+
+  <div id="von-neumann" class="step fp hide-inactive" data-x="9000" data-y="5700" data-z="4200">
+    <img src="img/fp/vonneumann.png">
+  </div>
+
+  <div id="binary" class="step fp hide-inactive" data-x="9000" data-y="5400" data-z="4000">
+    <img src="img/fp/binary.png">
+  </div>
+
+  <div id="assembly" class="step fp hide-inactive" data-x="9000" data-y="5100" data-z="3800">
+    <img src="img/fp/assembly.png">
+  </div>
+
+  <div id="c" class="step fp hide-inactive" data-x="9000" data-y="4800" data-z="3600">
+    <img src="img/fp/c.png">
+  </div>
+
+  <div id="cpp" class="step fp hide-inactive" data-x="9000" data-y="4500" data-z="3400">
+    <img src="img/fp/cpp.png">
+  </div>
+
+  <div id="java" class="step fp hide-inactive" data-x="9000" data-y="4200" data-z="3200">
+    <img src="img/fp/java.png">
+  </div>
+
+  <div id="brain1" class="step fp hide-inactive" data-x="9000" data-y="3900" data-z="3000">
+    <img src="img/fp/brain.png">
+  </div>
+
+  <div id="imperative-history" class="step fp hide-inactive" data-x="9000" data-y="5300" data-z="4800">
+    History of imperative programming in a nutshell...
+  </div>
+
+  <div id="increasing-abstraction" class="step fp hide-inactive" data-x="9000" data-y="5000" data-z="4800">
+    Dealing with difficulty by increasing abstraction
+  </div>
+
+  <div id="brain2" class="step fp hide-inactive" data-x="9000" data-y="5850" data-z="3300" data-rotate-x="180">
+    <img src="img/fp/brain.png">
+  </div>
+
+  <div id="lambda" class="step fp hide-inactive" data-x="9000" data-y="5550" data-z="3100" data-rotate-x="180">
+    <img src="img/fp/lambda.png">
+  </div>
+
+  <div id="lisp" class="step fp hide-inactive" data-x="9000" data-y="5250" data-z="2900" data-rotate-x="180">
+    <img src="img/fp/lisp.png">
+  </div>
+
+  <div id="haskell" class="step fp hide-inactive" data-x="9000" data-y="4950" data-z="2700" data-rotate-x="180">
+    <img src="img/fp/haskell.png">
+  </div>
+
+  <div id="erlang" class="step fp hide-inactive" data-x="9000" data-y="4650" data-z="2500" data-rotate-x="180">
+    <img src="img/fp/erlang.png">
+  </div>
+
+  <div id="scala" class="step fp hide-inactive" data-x="9000" data-y="4350" data-z="2300" data-rotate-x="180">
+    <img src="img/fp/scala.png">
+  </div>
+
+  <div id="functional-history" class="step fp hide-inactive" data-x="9000" data-y="5000" data-z="2000" data-rotate-x="180">
+    History of functional programming in a nutshell...
+  </div>
+
+  <div id="theory-to-practice" class="step fp hide-inactive" data-x="9000" data-y="4700" data-z="2000" data-rotate-x="180">
+    From theory down to practice
+  </div>
+
+  <div id="more-cool" class="step" data-x="7750" data-y="1400" data-z="300">
+    <div>End digression</div>
+    <div>More cool stuff, anyone??</div>
+  </div>
+
+  <div id="maps" class="step" data-x="7750" data-y="2000" data-z="300">
+    <iframe class="repl" src="repl.html?src=maps"></iframe>
+  </div>
+
+  <div id="destructuring" class="step" data-x="7750" data-y="2500" data-z="-200" data-rotate-x="90">
+    <iframe class="repl" src="repl.html?src=destructuring"></iframe>
+  </div>
+
+  <div id="switches" class="step" data-x="6750" data-y="2500" data-z="-200" data-rotate-x="90">
+    <iframe class="repl" src="repl.html?src=switches"></iframe>
+  </div>
+
+  <div id="oop" class="step" data-x="5750" data-y="2500" data-z="-200" data-rotate-x="90">
+    <iframe class="repl" src="repl.html?src=oop"></iframe>
+  </div>
+
+  <div id="cost" class="step" data-x="8500" data-y="2000" data-z="300" data-rotate-y="90">
+    <div>So what's the cost?</div>
+  </div>
+
+  <div id="toolchain" class="step" data-x="8500" data-y="2500" data-z="300" data-rotate-y="90">
+    <div>Add the compiler to your toolchain</div>
+    <div>(No big deal since you minify already)</div>
+  </div>
+
+</div>
+<!--
+    
+    Last, but not least.
+    
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+    
+    In here I just include full source of the script to make it more readable.
+    
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because it should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+    
+-->
+<script id="jquery" src="/classpath/jquery.js" type="text/javascript"></script>
+<script src="js/demo.js"></script>
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+<!--
+    
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>
+
+<!--
+    
+    Now you know more or less everything you need to build your first impress.js presentation, but before
+    you start...
+    
+    Oh, you've already cloned the code from GitHub?
+    
+    You have it open in text editor?
+    
+    Stop right there!
+    
+    That's not how you create awesome presentations. This is only a code. Implementation of the idea that
+    first needs to grow in your mind.
+    
+    So if you want to build great presentation take a pencil and piece of paper. And turn off the computer.
+    
+    Sketch, draw and write. Brainstorm your ideas on a paper. Try to build a mind-map of what you'd like
+    to present. It will get you closer and closer to the layout you'll build later with impress.js.
+    
+    Get back to the code only when you have your presentation ready on a paper. It doesn't make sense to do
+    it earlier, because you'll only waste your time fighting with positioning of useless points.
+    
+    If you think I'm crazy, please put your hands on a book called "Presentation Zen". It's all about 
+    creating awesome and engaging presentations.
+    
+    Think about it. 'Cause impress.js may not help you, if you have nothing interesting to say.
+    
+-->
+
+<!--
+    
+    Are you still reading this?
+    
+    For real?
+    
+    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
+    to congratulate you personally :)
+    
+    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
+    or anything you like to drink. And raise a glass for me ;)
+    
+    Cheers!
+    
+-->
+
