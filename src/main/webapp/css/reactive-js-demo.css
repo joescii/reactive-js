@@ -785,11 +785,11 @@ a:focus {
   font-size: 30px;
 }
 
-#coffee-logo {
-  background-image: url('/img/coffee.png');
+#js-logo {
+  background-image: url('/img/javascript-logo.png');
   background-repeat: no-repeat;
   background-position: center;
-  height: 93px;
+  height: 200px;
 }
 
 .repl {

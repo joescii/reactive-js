@@ -68,9 +68,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>A Sip of CoffeeScript | by Joe Barnes @joescii</title>
+    <title>Principles of Reactive Programming in JavaScript | by Joe Barnes @joescii</title>
     
-    <meta name="description" content="CoffeeScript is a little language that compiles into JavaScript." />
+    <meta name="description" content="Principles of Reactive Programming in JavaScript" />
     <meta name="author" content="Joe Barnes" />
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
@@ -90,7 +90,7 @@
         When creating your own presentation get rid of this file. Start from scratch, it's fun!
         
     -->
-    <link href="css/coffee-demo.css" rel="stylesheet" />
+    <link href="css/reactive-js-demo.css" rel="stylesheet" />
     
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -150,20 +150,16 @@
 </div>
 
 <div id="impress">
+  <!--1024x768-->
 
-  <div id="coffee-logo" class="visible" data-x="-2000" data-z="350" data-y="-30">
+  <div id="js-logo" class="visible" data-x="-2300" data-z="350" data-y="-250">
   </div>
 
   <div id="title" class="step" data-x="-2000">
-    <h1>A Sip of</h1>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h1>Principles of Reactive Programming in JavaScript</h1>
   </div>
 
-  <div id="joe-barnes" class="step" data-x="-1400" data-y="230" data-z="300">
+  <div id="joe-barnes" class="step" data-x="-1350" data-y="230" data-z="300">
     <div class="name">
       <h1>Joe Barnes</h1>
       <h2><i><a href="https://twitter.com/joescii">@joescii</a></i></h2>
@@ -175,226 +171,10 @@
     </ul>
   </div>
 
-  <div id="what" class="step hide-inactive" data-x="-2000" data-y="-15" data-z="1000">
-    What is
-    <span>?</span>
+  <div id="code" class="step" data-x="-1400" data-y="1000" data-z="300">
+    <iframe class="repl" src="repl.html?src=code"></iframe>
   </div>
 
-  <div id="little-language" class="step" data-x="-2000" data-y="1500" data-z="1000" data-rotate="90">
-    CoffeeScript is a little language that compiles into JavaScript.
-  </div>
-
-  <div id="one-to-one" class="step" data-x="-2750" data-y="1500" data-z="1000" data-rotate="90">
-    Compiles one-to-one into the equivalent JS, and there is no interpretation at runtime
-  </div>
-
-  <div id="call-js" class="step" data-x="-1600" data-y="-1500" data-z="1180" data-rotate-x="90">
-    You can use any existing JavaScript library seamlessly from CoffeeScript
-  </div>
-
-  <div id="to-js" class="visible" data-x="-1500" data-y="-1300" data-z="1120" data-rotate-x="90">
-    <img src="img/arrow.png">
-  </div>
-
-  <div id="ffi" class="visible" data-x="-1600" data-y="-1500" data-z="1460" data-rotate-x="90">
-    <img class="coffeescript" src="img/coffee.png">
-    <img class="javascript" src="img/javascript-logo.png">
-  </div>
-
-  <div id="to-cs" class="visible" data-x="-1500" data-y="-1300" data-z="1830" data-rotate-x="90">
-    <img src="img/arrow.png">
-  </div>
-
-  <div id="bi-directional" class="step" data-x="-1600" data-y="-1500" data-z="1475" data-rotate-x="90" data-scale="1.3">
-
-  </div>
-
-  <div id="just-js" class="step" data-x="-1600" data-y="-1500" data-z="2100" data-rotate-x="45">
-    It's just javascript!
-  </div>
-
-  <div id="why-bother" class="step" data-x="-1600" data-y="-1500" data-z="2100" data-rotate-x="45" data-rotate-y="90">
-    Ok, so... why bother?
-  </div>
-
-  <div id="evil" class="step" data-x="-1600" data-y="-2000" data-z="3100" data-rotate-x="45" data-rotate-y="180">
-    Javascript is evil.
-  </div>
-
-  <div id="not-the-first" class="step" data-x="-600" data-y="-2000" data-z="3100" data-rotate-x="45" data-rotate-y="180">
-    And I ain't the first to say it.
-  </div>
-
-  <div id="semi-colons" class="step" data-x="-600" data-y="-1500" data-z="3100" data-rotate-y="90">
-    Take for instance, semi-colons...
-    <div>which are semi-required.</div>
-  </div>
-
-  <div id="hello" class="step" data-x="0" data-y="2000" data-z="300">
-    <iframe class="repl" src="repl.html?src=hello"></iframe>
-  </div>
-
-  <div id="big-deal" class="step" data-x="0" data-y="2600" data-z="300">
-    This is a big deal if you're used to languages which don't require semi-colons!
-  </div>
-
-  <div id="optional-syntax" class="step" data-x="0" data-y="3200" data-z="300">
-    In fact, much syntax is optional or unneeded entirely
-  </div>
-
-  <div id="wrapped" class="step" data-x="2250" data-y="2000" data-z="300">
-    <iframe class="repl" src="repl.html?src=wrapped&bare=false"></iframe>
-  </div>
-
-  <div id="bare-on" class="step" data-x="2250" data-y="2600" data-z="300">
-    But we'll keep that turned off for your viewing pleasure
-  </div>
-
-  <div id="other-hazards" class="step" data-x="4500" data-y="2000" data-z="300">
-    <iframe class="repl" src="repl.html?src=hazards"></iframe>
-  </div>
-
-  <div id="nulls" class="step" data-x="5625" data-y="2000" data-z="300">
-    <iframe class="repl" src="repl.html?src=nulls"></iframe>
-  </div>
-
-  <div id="functions" class="step" data-x="6750" data-y="2000" data-z="300">
-    <iframe class="repl" src="repl.html?src=functions"></iframe>
-  </div>
-
-  <div id="expressions" class="step" data-x="6750" data-y="2600" data-z="300">
-    `return` is always implied, because a function body is an <i>expression</i>.
-  </div>
-
-  <div id="digression" class="step" data-x="6750" data-y="2600" data-z="3000">
-    DIGRESSION
-  </div>
-
-  <div id="expression" class="step" data-x="6750" data-y="3200" data-z="3000">
-    What is an expression?
-  </div>
-
-  <div id="statement" class="step" data-x="6260" data-y="3200" data-z="3000">
-    What is a statement?
-  </div>
-
-  <div id="how-what" class="step" data-x="6505" data-y="3700" data-z="3000">
-    How vs. What
-  </div>
-
-  <div id="statement-vs-expression" class="step" data-x="6000" data-y="4700" data-z="3000">
-    <iframe class="repl" src="repl.html?src=expressions"></iframe>
-  </div>
-
-  <div id="express-all-the-things" class="step" data-x="7000" data-y="4700" data-z="3000">
-    <iframe class="repl" src="repl.html?src=express-all-the-things"></iframe>
-  </div>
-
-  <div id="for-comprehension" class="step" data-x="8000" data-y="4700" data-z="3000">
-    <iframe class="repl" src="repl.html?src=forcomp"></iframe>
-  </div>
-
-  <div id="up-arrow" class="visible" data-x="8850" data-y="4700" data-z="3000" data-rotate-x="45">
-    <img src="img/fp/arrow.png">
-  </div>
-
-  <div id="von-neumann" class="step fp hide-inactive" data-x="9000" data-y="5700" data-z="4200">
-    <img src="img/fp/vonneumann.png">
-  </div>
-
-  <div id="binary" class="step fp hide-inactive" data-x="9000" data-y="5400" data-z="4000">
-    <img src="img/fp/binary.png">
-  </div>
-
-  <div id="assembly" class="step fp hide-inactive" data-x="9000" data-y="5100" data-z="3800">
-    <img src="img/fp/assembly.png">
-  </div>
-
-  <div id="c" class="step fp hide-inactive" data-x="9000" data-y="4800" data-z="3600">
-    <img src="img/fp/c.png">
-  </div>
-
-  <div id="cpp" class="step fp hide-inactive" data-x="9000" data-y="4500" data-z="3400">
-    <img src="img/fp/cpp.png">
-  </div>
-
-  <div id="java" class="step fp hide-inactive" data-x="9000" data-y="4200" data-z="3200">
-    <img src="img/fp/java.png">
-  </div>
-
-  <div id="brain1" class="step fp hide-inactive" data-x="9000" data-y="3900" data-z="3000">
-    <img src="img/fp/brain.png">
-  </div>
-
-  <div id="imperative-history" class="step fp hide-inactive" data-x="9000" data-y="5300" data-z="4800">
-    History of imperative programming in a nutshell...
-  </div>
-
-  <div id="increasing-abstraction" class="step fp hide-inactive" data-x="9000" data-y="5000" data-z="4800">
-    Dealing with difficulty by increasing abstraction
-  </div>
-
-  <div id="brain2" class="step fp hide-inactive" data-x="9000" data-y="5850" data-z="3300" data-rotate-x="180">
-    <img src="img/fp/brain.png">
-  </div>
-
-  <div id="lambda" class="step fp hide-inactive" data-x="9000" data-y="5550" data-z="3100" data-rotate-x="180">
-    <img src="img/fp/lambda.png">
-  </div>
-
-  <div id="lisp" class="step fp hide-inactive" data-x="9000" data-y="5250" data-z="2900" data-rotate-x="180">
-    <img src="img/fp/lisp.png">
-  </div>
-
-  <div id="haskell" class="step fp hide-inactive" data-x="9000" data-y="4950" data-z="2700" data-rotate-x="180">
-    <img src="img/fp/haskell.png">
-  </div>
-
-  <div id="erlang" class="step fp hide-inactive" data-x="9000" data-y="4650" data-z="2500" data-rotate-x="180">
-    <img src="img/fp/erlang.png">
-  </div>
-
-  <div id="scala" class="step fp hide-inactive" data-x="9000" data-y="4350" data-z="2300" data-rotate-x="180">
-    <img src="img/fp/scala.png">
-  </div>
-
-  <div id="functional-history" class="step fp hide-inactive" data-x="9000" data-y="5000" data-z="2000" data-rotate-x="180">
-    History of functional programming in a nutshell...
-  </div>
-
-  <div id="theory-to-practice" class="step fp hide-inactive" data-x="9000" data-y="4700" data-z="2000" data-rotate-x="180">
-    From theory down to practice
-  </div>
-
-  <div id="more-cool" class="step" data-x="7750" data-y="1400" data-z="300">
-    <div>End digression</div>
-    <div>More cool stuff, anyone??</div>
-  </div>
-
-  <div id="maps" class="step" data-x="7750" data-y="2000" data-z="300">
-    <iframe class="repl" src="repl.html?src=maps"></iframe>
-  </div>
-
-  <div id="destructuring" class="step" data-x="7750" data-y="2500" data-z="-200" data-rotate-x="90">
-    <iframe class="repl" src="repl.html?src=destructuring"></iframe>
-  </div>
-
-  <div id="switches" class="step" data-x="6750" data-y="2500" data-z="-200" data-rotate-x="90">
-    <iframe class="repl" src="repl.html?src=switches"></iframe>
-  </div>
-
-  <div id="oop" class="step" data-x="5750" data-y="2500" data-z="-200" data-rotate-x="90">
-    <iframe class="repl" src="repl.html?src=oop"></iframe>
-  </div>
-
-  <div id="cost" class="step" data-x="8500" data-y="2000" data-z="300" data-rotate-y="90">
-    <div>So what's the cost?</div>
-  </div>
-
-  <div id="toolchain" class="step" data-x="8500" data-y="2500" data-z="300" data-rotate-y="90">
-    <div>Add the compiler to your toolchain</div>
-    <div>(No big deal since you minify already)</div>
-  </div>
 
 </div>
 <!--
