@@ -19,7 +19,6 @@
         body: $('.spec-runner')[0]
       }));
       self.jasmine.getEnv().addReporter(new StylishReporter());
-      self.execute(editors.get('coffee'));
       self.jasmine.getEnv().execute();
     };
     self.execute = function(editor) {
@@ -108,7 +107,7 @@
   };
 
   var editors = {
-    names: ['coffee','javascript'],
+    names: ['javascript'],
     get: function(name) {
       return $('#'+name).data('editor');
     },
@@ -251,14 +250,9 @@
 
   if(!window.runningTryJasmineSpecs) {
     $(document).ready(function(){
-      $('#coffee').codeBox();
       $('#javascript').codeBox();
-      $('#coffee').keyup(function(e){
-        templates.goJavaScript();
-      });
       templates.init();
       arrangeEditors(localStorage['verticalSplit'] === "false" ? false : true);
-      templates.goJavaScript();
     });
   }
 })(jQuery);
