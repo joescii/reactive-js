@@ -1,7 +1,5 @@
 #!/usr/bin/jjs
 
-//load('require.js');
-
 load('env.nashorn.1.2.js');
 
 var httpGet = function (url, success, fail) {
@@ -19,8 +17,4 @@ var httpGet = function (url, success, fail) {
   request.send(null);
 };
 
-var success = function(quote) {
-  print(quote);
-};
-
-httpGet("http://finance.yahoo.com/d/quotes.csv?s=ADTN&f=l1", success);
+load('demo.js');
