@@ -797,69 +797,62 @@ a:focus {
   height: 700px;
 }
 
-#what {
-  width: 730px;
+.app h1 {
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 40px;
 }
 
-#what span {
-  padding-left: 310px;
+button {
+  height: 50px;
+  font-size: larger;
+  margin: 7px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+  box-shadow:inset 0px 1px 0px 0px #f5978e;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+  background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+  background-color:#f24537;
+  -webkit-border-top-left-radius:3px;
+  -moz-border-radius-topleft:3px;
+  border-top-left-radius:3px;
+  -webkit-border-top-right-radius:3px;
+  -moz-border-radius-topright:3px;
+  border-top-right-radius:3px;
+  -webkit-border-bottom-right-radius:3px;
+  -moz-border-radius-bottomright:3px;
+  border-bottom-right-radius:3px;
+  -webkit-border-bottom-left-radius:3px;
+  -moz-border-radius-bottomleft:3px;
+  border-bottom-left-radius:3px;
+  text-indent:0;
+  border:1px solid #d02718;
+  display:inline-block;
+  color:#ffffff;
+  font-family:Arial;
+  /*font-size:15px;*/
+  font-weight:bold;
+  /*font-style:normal;*/
+  /*height:40px;*/
+  line-height:40px;
+  /*width:86px;*/
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #810e05;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-
-#call-js {
-  padding-bottom: 600px;
+button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+  background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+  background-color:#c62d1f;
 }
-
-#to-js {
-  width: 800px;
+button:active {
+  position:relative;
+  top:1px;
 }
-
-#to-js img {
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-  filter: FlipH;
-}
-
-#ffi {
-  width: 1000px;
-}
-
-#ffi .coffeescript {
-  padding-top: 60px;
-  padding-right: 100px;
-}
-
-#ffi .javascript {
-  float: right;
-}
-
-#to-cs {
-  width: 800px;
-}
-
-#to-cs img {
-  -moz-transform: scaleY(-1);
-  -webkit-transform: scaleY(-1);
-  -o-transform: scaleY(-1);
-  transform: scaleY(-1);
-  -ms-filter: flipv; /*IE*/
-  filter: flipv; /*IE*/
-  top: 1px; position: relative;
-}
-
-#up-arrow img {
-  transform:scale(4,3);
-  transform-origin:0 0;
-}
-
-.fp img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#lambda img {
-  width: 300px;
-  height: 300px;
-}
+/* This button was generated using CSSButtonGenerator.com */
