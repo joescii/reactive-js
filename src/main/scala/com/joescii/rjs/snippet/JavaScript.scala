@@ -1,4 +1,4 @@
-package com.joescii.coffee.snippet
+package com.joescii.rjs.snippet
 
 import scala.xml.{ Text => T }
 import net.liftweb.http.{LiftRules, S}

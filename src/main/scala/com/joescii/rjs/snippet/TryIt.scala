@@ -1,4 +1,4 @@
-package com.joescii.coffee.snippet
+package com.joescii.rjs.snippet
 
 import net.liftweb.http.S
 import net.liftweb.common.Full

@@ -20,7 +20,7 @@ import net.liftmodules.ng.AngularJS
 class Boot {
   def boot {
     // where to search snippet
-    LiftRules.addToPackages("com.joescii.coffee")
+    LiftRules.addToPackages("com.joescii.rjs")
 
     // Build SiteMap
     val entries = List(
