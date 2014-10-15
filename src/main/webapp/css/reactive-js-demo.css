@@ -856,3 +856,81 @@ button:active {
   top:1px;
 }
 /* This button was generated using CSSButtonGenerator.com */
+
+/* The CSS */
+select {
+  height: 50px;
+  font-size: larger;
+  padding:3px;
+  margin: 7px;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+  box-shadow:inset 0px 1px 0px 0px #f5978e;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+  background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+  background-color:#f24537;
+  color:#ffffff;
+  -webkit-border-top-left-radius:3px;
+  -moz-border-radius-topleft:3px;
+  border-top-left-radius:3px;
+  -webkit-border-top-right-radius:3px;
+  -moz-border-radius-topright:3px;
+  border-top-right-radius:3px;
+  -webkit-border-bottom-right-radius:3px;
+  -moz-border-radius-bottomright:3px;
+  border-bottom-right-radius:3px;
+  -webkit-border-bottom-left-radius:3px;
+  -moz-border-radius-bottomleft:3px;
+  border-bottom-left-radius:3px;
+  text-indent:0;
+  border:1px solid #d02718;
+  display:inline-block;
+  color:#ffffff;
+  font-family:Arial;
+  /*font-size:15px;*/
+  font-weight:bold;
+  /*font-style:normal;*/
+  /*height:40px;*/
+  line-height:40px;
+  /*width:86px;*/
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #810e05;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor:pointer;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select {padding-right:18px}
+}
+
+label {position:relative}
+label:after {
+  content:'<>';
+  font:11px "Consolas", monospace;
+  color:#aaa;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform:rotate(90deg);
+  right:8px; top:2px;
+  padding:0 0 2px;
+  border-bottom:1px solid #ddd;
+  position:absolute;
+  pointer-events:none;
+}
+label:before {
+  content:'';
+  right:6px; top:0px;
+  width:20px; height:20px;
+  background:#f8f8f8;
+  position:absolute;
+  pointer-events:none;
+  display:block;
+}
