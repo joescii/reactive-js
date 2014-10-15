@@ -10,7 +10,7 @@ import sitemap._
 import Loc._
 import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery._
-import net.liftmodules.ng.AngularJS
+import net.liftmodules.ng._
 import com.joescii.rjs.rest.RestfulServices
 
 
@@ -56,6 +56,7 @@ class Boot {
     JQueryModule.init()
 
     AngularJS.init()
+    Angular.init()
 
     RestfulServices.init()
   }
