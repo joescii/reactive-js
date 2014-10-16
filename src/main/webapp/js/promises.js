@@ -1,14 +1,18 @@
 angular.module('Promises', ['DemoServices'])
 
 .controller('PromisesSlide', ['$scope', '$http', function($scope, http){
-  $scope.graphics = ['£', '€', '\u20B9', '$'];
-  $scope.currencies = ['GBP', 'EUR', 'INR', 'CLP'];
+  $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
+  $scope.symbol = $scope.symbolChoices[0];
+  $scope.sharesChoices = [1,2,3,4,5,6,7,8,9,10];
+  $scope.shares = $scope.sharesChoices[0];
+  $scope.graphics = ['$', '£', '€', '\u20B9', '$'];
+  $scope.currencies = ['USD', 'GBP', 'EUR', 'INR', 'CLP'];
   $scope.currency = 0;
   $scope.graphic = $scope.graphics[0];
   $scope.quote = 0;
 
   var quote = function() {
-    return http.get("/quote/MENT");
+    return http.get("/quote/"+$scope.symbol);
   };
 
   var convert = function(usd) {
@@ -17,8 +21,10 @@ angular.module('Promises', ['DemoServices'])
 
   $scope.onQuote = function() {
     $scope.graphic = $scope.graphics[$scope.currency];
+    console.log($scope.shares);
     quote()
-      .then(function(usd){return convert(usd.data)})
+      .then(function(usd){return usd.data * $scope.shares})
+      .then(function(usd){return convert(usd)})
       .then(function(price){$scope.quote = price.data})
       .catch(function(err){console.log("You can't get ye stocks!!!")})
   }
