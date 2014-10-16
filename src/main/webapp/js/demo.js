@@ -22,4 +22,15 @@ angular.module('DemoServices', [])
 
 }])
 
+.factory('promiseHttp', ['$http', function($http){
+  var httpGet = function(url) {
+    return $http.get(url).then(function(res){return res.data});
+  };
+
+  return {
+    get: httpGet
+  }
+
+}])
+
 ;

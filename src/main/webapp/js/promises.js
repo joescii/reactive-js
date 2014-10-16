@@ -1,6 +1,6 @@
 angular.module('Promises', ['DemoServices'])
 
-.controller('PromisesSlide', ['$scope', '$http', function($scope, http){
+.controller('PromisesSlide', ['$scope', 'promiseHttp', function($scope, http){
   $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
   $scope.symbol = $scope.symbolChoices[0];
   $scope.sharesChoices = [1,2,3,4,5,6,7,8,9,10];
@@ -21,11 +21,10 @@ angular.module('Promises', ['DemoServices'])
 
   $scope.onQuote = function() {
     $scope.graphic = $scope.graphics[$scope.currency];
-    console.log($scope.shares);
     quote()
-      .then(function(usd){return usd.data * $scope.shares})
+      .then(function(usd){return usd * $scope.shares})
       .then(function(usd){return convert(usd)})
-      .then(function(price){$scope.quote = price.data})
+      .then(function(price){$scope.quote = price})
       .catch(function(err){console.log("You can't get ye stocks!!!")})
   }
 
