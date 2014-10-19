@@ -4,12 +4,14 @@ package rest
 import quotes.YahooFinance._
 
 import net.liftweb.http.rest.RestHelper
-import net.liftweb.http.{LiftResponse, ServiceUnavailableResponse, PlainTextResponse, LiftRules}
+import net.liftweb.http._
 import dispatch._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.Await
+import net.liftweb.json.JsonAST.JValue
+import net.liftweb.http.ServiceUnavailableResponse
 import net.liftweb.common.Full
 
 object RestfulServices extends RestHelper {
@@ -17,9 +19,15 @@ object RestfulServices extends RestHelper {
     LiftRules.statelessDispatch.append(RestfulServices)
   }
 
-  def response(req:dispatch.Future[String], success: String => String = {s => s} ) = {
+  def stringResponse(req:dispatch.Future[String], success: String => String = {s => s} ) =
+    response(req, (res:String) => PlainTextResponse(success(res)))
+
+  def jsonResponse(req:dispatch.Future[JValue], success: JValue => JValue = {v => v} ) =
+    response(req, (res:JValue) => JsonResponse(success(res)))
+
+  def response[T](req:dispatch.Future[T], success: T => LiftResponse ) = {
     val f:Future[LiftResponse] = req.either.map(_ match {
-      case Right(quote) => PlainTextResponse(success(quote))
+      case Right(res) => success(res)
       case Left(err) => err.printStackTrace(); ServiceUnavailableResponse(1000)
     })
 
@@ -34,8 +42,9 @@ object RestfulServices extends RestHelper {
   }
 
   serve {
-    case "quote" :: symbol :: Nil Get _ => response(stock(symbol))
-    case "exchange" :: currency :: Nil Get _ => response(exchange(currency))
-    case "convert" :: currency :: amount :: Nil Get _ => response(exchange(currency), quote => convert(quote, amount) )
+    case "quote" :: symbol :: Nil Get _ => stringResponse(stock(symbol))
+    case "exchange" :: currency :: Nil Get _ => stringResponse(exchange(currency))
+    case "convert" :: currency :: amount :: Nil Get _ => stringResponse(exchange(currency), quote => convert(quote, amount) )
+    case "suggest" :: query :: Nil Get _ => jsonResponse(suggest(query))
   }
 }
