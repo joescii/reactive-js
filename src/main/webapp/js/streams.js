@@ -1,26 +1,25 @@
-angular.module('Streams', [])
+angular.module('Streams', ['rx'])
 
-.controller('StreamsSlide', ['$scope', function($scope){
-  var events = function(topic) {
-    return Rx.Observable.create(function(observer){
-      return $scope.$on(topic, function(event, data){
-        observer.onNext(data);
-      })
-  })};
-  var quotes = events('CurrencyQuote');
-  var time = events('CurrentTime');
+.controller('StreamsSlide', ['$scope', 'observeOnScope', 'promiseHttp', function($scope, observe, http){
+  observe($scope, 'symSearch')
+    .map(function(e){return e.newValue})
+    .filter(function(v){return v})
+    .throttle(1000)
+    .distinctUntilChanged()
+    .subscribe(function(v){
+      http.get("/suggest/"+encodeURIComponent(v))
+        .then(function(suggestions) {
+          $scope.symChoices = suggestions;
+        })
+        .catch(function(err) {
+          console.log('well, damn');
+          console.log(err);
+        })
+    });
 
-  time.subscribe(function(data){
-    $scope.time = data;
-  });
-
-  var currencyIs = function(currency) {
-    return function(quote) {
-      return quote.currency === currency;
-    }
+  $scope.selectSuggestion = function(index) {
+    $scope.symbol = $scope.symChoices[index].symbol;
   };
-  var toQuote = function(data) { return data.quote };
-  quotes.where(currencyIs('EUR')).map(toQuote).forEach(function(eur){ $scope.eur = eur })
 }])
 
 ;

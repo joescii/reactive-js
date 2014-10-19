@@ -1,19 +1,15 @@
-<div ng-controller="StreamsSlide">
-  <div>Time: {{time}}</div>
-  <div>CLP: ${{clp}}</div>
-  <div>CNY: ¥{{cny}}</div>
-  <div>CRC: ₡{{crc}}</div>
-  <div>CUP: ₱{{cup}}</div>
-  <div>EUR: €{{eur}}</div>
-  <div>GBP: £{{gbp}}</div>
-  <div>INR: &#x20B9{{inr}}</div>
-  <div>ILS: ₪{{ILS}}</div>
-  <div>IRR: ﷼{{irr}}</div>
-  <div>KGS: лв{{kgs}}</div>
-  <div>KRW: ₩{{krw}}</div>
-  <div>LAK: ₭{{lak}}</div>
-  <div>MNT: ₮{{mnt}}</div>
-  <div>UAH: ₴{{uah}}</div>
-  <div>VND: ₫{{vnd}}</div>
-  <div data-lift="comet?type=CurrencyQuotes"></div>
+<div ng-controller="PromisesSlide">
+  <div ng-controller="StreamsSlide">
+    <h1>Joe's Stock Shack</h1>
+    <div>Price: {{graphic}}{{quote}}</div>
+    <input class="short" type="text" ng-model="symbol">
+    <select ng-model="shares" ng-options="s for s in sharesChoices"></select>
+    <select ng-model="currency" ng-options="i as c for (i, c) in currencies"></select>
+    <button ng-click="onQuote()">Get Quote</button>
+
+    <div class="suggestions">
+      <input type="text" ng-model="symSearch" placeholder="Search">
+      <div class="suggestion" ng-repeat="c in symChoices" ng-click="selectSuggestion($index)">{{c.symbol}} ({{c.name}})</div>
+    </div>
+  </div>
 </div>
