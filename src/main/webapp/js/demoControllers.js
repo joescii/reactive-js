@@ -1,6 +1,6 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
-.factory('PromisesController', ['promiseHttp', function(http) {
+.factory('PromisesController', ['convertedHttp', '$q', function(http, $q) {
   var construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
@@ -14,7 +14,7 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
     $scope.onQuote = function() {
       $scope.graphic = $scope.graphics[$scope.currency];
-      setQuote();
+      doQuote();
     };
 
 
@@ -25,25 +25,33 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     const currency = function(){ return $scope.currencies[$scope.currency] };
 
     // /quote/<symbol>
+    // /exchange/<currency>
     // /convert/<currency>/<usd>
 
     const getQuote = function(){ return http.get("/quote/"+symbol()) };
+    const getExchange = function(){ return http.get("/exchange/"+currency()) };
     const multiplyIt = function(v){ return v * shares() };
     const convertIt = function(usd){ return http.get("/convert/"+currency()+"/"+usd) };
     const setQuote = function(q){ $scope.quote = q };
     const logIt = function(err){ console.log(err) };
 
-    const setQuote = function() {
+    const doQuote = function() {
       console.log("Symbol is "+symbol());
       console.log("Shares is "+shares());
       console.log("Currency is "+currency());
 
+      $q.all([getQuote(), getExchange()])
+        .then(function(both){
+          setQuote(both[0] * both[1] * shares())
+        })
+        .catch(logIt);
+
       // I promise it can be better. :)
-      getQuote()
-        .then(multiplyIt)
-        .then(convertIt)
-        .then(setQuote)
-        .catch(logIt)
+//      getQuote()
+//        .then(multiplyIt)
+//        .then(convertIt)
+//        .then(setQuote)
+//        .catch(logIt)
     };
 
   };

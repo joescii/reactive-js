@@ -33,4 +33,23 @@ angular.module('DemoServices', [])
 
 }])
 
+.factory('convertedHttp', ['callbackHttp', '$q',
+  function(http, $q){
+    const httpGet = function(url){
+      const defer = $q.defer();
+
+      http.get(url,function(response){
+        defer.resolve(response);
+      },function(err){
+        defer.reject(err);
+      });
+
+      return defer.promise;
+    };
+
+    return {
+      get: httpGet
+    }
+}])
+
 ;

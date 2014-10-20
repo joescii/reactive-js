@@ -192,6 +192,7 @@ a:focus {
 
 .step ol, ul {
   font-size: 36px;
+  margin-left: 40px;
 }
 
 .visible {
@@ -984,7 +985,7 @@ input.short {
   cursor: pointer;
 }
 
-#manifesto h1 {
+h1 {
   font-weight: bold;
   font-size: 40px;
   text-align: center;
@@ -1007,4 +1008,8 @@ input.short {
   margin-right: auto;
   text-align: center;
   padding-bottom: 10px;
+}
+
+.strikethru {
+  text-decoration: line-through;
 }
