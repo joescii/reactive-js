@@ -1,6 +1,6 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
-.factory('PromisesController', ['callbackHttp', function(http) {
+.factory('PromisesController', ['promiseHttp', function(http) {
   var construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
@@ -27,13 +27,20 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     // /quote/<symbol>
     // /convert/<currency>/<usd>
 
-    const setQuote = function() {
-      $scope.quote = "Implement me!";
+    const quote = function(){ return http.get("/quote/"+symbol()) };
+    const convert = function(usd){ return http.get("/convert/"+currency()+"/"+usd) };
 
+    const setQuote = function() {
       console.log("Symbol is "+symbol());
       console.log("Shares is "+shares());
       console.log("Currency is "+currency());
 
+      // I promise it can be better. :)
+      quote()
+        .then(function(quote){ return quote * shares() })
+        .then(convert)
+        .then(function(total){ $scope.quote = total })
+        .catch(function(err){ console.log(err) })
     };
 
   };
