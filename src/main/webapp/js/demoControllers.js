@@ -1,6 +1,6 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
-.factory('PromisesController', ['promiseHttp', function(http) {
+.factory('PromisesController', ['callbackHttp', function(http) {
   var construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
@@ -12,22 +12,28 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     $scope.graphic = $scope.graphics[0];
     $scope.quote = 0;
 
-    var quote = function() {
-      return http.get("/quote/"+$scope.symbol);
-    };
-
-    var convert = function(usd) {
-      return http.get("/convert/"+$scope.currencies[$scope.currency]+"/"+usd);
-    };
-
     $scope.onQuote = function() {
       $scope.graphic = $scope.graphics[$scope.currency];
-      quote()
-        .then(function(usd){return usd * $scope.shares})
-        .then(function(usd){return convert(usd)})
-        .then(function(price){$scope.quote = price})
-        .catch(function(err){console.log("You can't get ye stocks!!!")})
-    }
+      setQuote();
+    };
+
+
+
+
+    const symbol = function(){ return $scope.symbol };
+    const currency = function(){ return $scope.currencies[$scope.currency] };
+
+    // /quote/<symbol>
+    // /convert/<currency>/<usd>
+
+    const setQuote = function() {
+      $scope.quote = "Implement me!";
+
+      console.log("Symbol is "+symbol());
+      console.log("Currency is "+currency());
+
+    };
+
   };
 
   return {
