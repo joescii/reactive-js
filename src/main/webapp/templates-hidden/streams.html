@@ -2,14 +2,14 @@
   <div ng-controller="StreamsSlide">
     <h1>Joe's Stock Shack</h1>
     <div>Price: {{graphic}}{{quote}}</div>
-    <input class="short" type="text" ng-model="symbol">
+    <input class="short" type="text" ng-model="symbol" placeholder="Symbol">
     <select ng-model="shares" ng-options="s for s in sharesChoices"></select>
     <select ng-model="currency" ng-options="i as c for (i, c) in currencies"></select>
     <button ng-click="onQuote()">Quote</button>
 
     <div class="suggestions">
       <input type="text" ng-model="symSearch" placeholder="Search">
-      <div class="suggestion" ng-repeat="c in symChoices" ng-click="selectSuggestion($index)">{{c.symbol}} ({{c.name}})</div>
+      <div class="suggestion" ng-repeat="c in suggestions" ng-click="selectSuggestion($index)">{{c.symbol}} ({{c.name}})</div>
     </div>
   </div>
 </div>

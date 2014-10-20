@@ -65,17 +65,34 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
   function(ctrl, observe, http){
   var construct = function($scope){
     ctrl.forScope($scope);
+    $scope.symbol = "";
 
     // Click handler
     $scope.selectSuggestion = function(index) {
-      $scope.symbol = $scope.symChoices[index].symbol;
+      $scope.symbol = $scope.suggestions[index].symbol;
     };
 
 
 
     // /suggest/<query>
 
-    
+    const toNewValue = function(event) { return event.newValue };
+    const isDefined = function(v){ return v };
+    const longerThan2 = function(text){ return text.length > 2 };
+    const getSuggestions = function(text){
+      http.get("/suggest/"+encodeURIComponent(text))
+        .then(function(suggestions) {
+          $scope.suggestions = suggestions;
+        })
+    };
+
+    observe($scope, 'symSearch')
+      .map(toNewValue)
+      .filter(isDefined)
+      .filter(longerThan2)
+      .throttle(500)
+      .distinctUntilChanged()
+      .subscribe(getSuggestions);
 
   };
 
