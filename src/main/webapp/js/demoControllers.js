@@ -27,8 +27,11 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     // /quote/<symbol>
     // /convert/<currency>/<usd>
 
-    const quote = function(){ return http.get("/quote/"+symbol()) };
-    const convert = function(usd){ return http.get("/convert/"+currency()+"/"+usd) };
+    const getQuote = function(){ return http.get("/quote/"+symbol()) };
+    const multiplyIt = function(v){ return v * shares() };
+    const convertIt = function(usd){ return http.get("/convert/"+currency()+"/"+usd) };
+    const setQuote = function(q){ $scope.quote = q };
+    const logIt = function(err){ console.log(err) };
 
     const setQuote = function() {
       console.log("Symbol is "+symbol());
@@ -36,11 +39,11 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
       console.log("Currency is "+currency());
 
       // I promise it can be better. :)
-      quote()
-        .then(function(quote){ return quote * shares() })
-        .then(convert)
-        .then(function(total){ $scope.quote = total })
-        .catch(function(err){ console.log(err) })
+      getQuote()
+        .then(multiplyIt)
+        .then(convertIt)
+        .then(setQuote)
+        .catch(logIt)
     };
 
   };
