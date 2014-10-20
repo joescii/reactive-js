@@ -809,6 +809,7 @@ button {
   height: 50px;
   font-size: larger;
   margin: 7px;
+  padding-top: 9px;
   -moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
   -webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
   box-shadow:inset 0px 1px 0px 0px #f5978e;
@@ -862,6 +863,7 @@ select {
   height: 50px;
   font-size: larger;
   padding:3px;
+  margin-top: 6px;
   margin: 7px;
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -982,4 +984,29 @@ input.short {
 
 .suggestion {
   cursor: pointer;
+}
+
+#manifesto h1 {
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 40px;
+}
+
+#manifesto {
+  background-image: url("/img/reactive-traits.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-bottom: 10px;
 }
