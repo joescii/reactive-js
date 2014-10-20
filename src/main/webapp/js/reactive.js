@@ -1,1 +1,1 @@
-angular.module('ReactiveApp', ['Promises', 'Streams']);
+angular.module('ReactiveApp', ['Slides']);
