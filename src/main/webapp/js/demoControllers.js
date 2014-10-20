@@ -21,6 +21,7 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 
     const symbol = function(){ return $scope.symbol };
+    const shares = function(){ return $scope.shares };
     const currency = function(){ return $scope.currencies[$scope.currency] };
 
     // /quote/<symbol>
@@ -30,6 +31,7 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
       $scope.quote = "Implement me!";
 
       console.log("Symbol is "+symbol());
+      console.log("Shares is "+shares());
       console.log("Currency is "+currency());
 
     };
