@@ -6,7 +6,7 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     $scope.symbol = $scope.symbolChoices[0];
     $scope.sharesChoices = [1,2,3,4,5,6,7,8,9,10];
     $scope.shares = $scope.sharesChoices[0];
-    $scope.graphics = ['$', '£', '€', '\u20B9', '$'];
+    $scope.graphics = ['$', '£', '€', '₹', '$'];
     $scope.currencies = ['USD', 'GBP', 'EUR', 'INR', 'CLP'];
     $scope.currency = 0;
     $scope.graphic = $scope.graphics[0];
