@@ -46,5 +46,6 @@ object RestfulServices extends RestHelper {
     case "exchange" :: currency :: Nil Get _ => stringResponse(exchange(currency))
     case "convert" :: currency :: amount :: Nil Get _ => stringResponse(exchange(currency), quote => convert(quote, amount) )
     case "suggest" :: query :: Nil Get _ => jsonResponse(suggest(query))
+    case "history" :: symbol :: Nil Get _ => stringResponse(history(symbol))
   }
 }
