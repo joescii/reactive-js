@@ -763,7 +763,14 @@ a:focus {
 #title .follow {
   margin-top: 60px;
   font-size: 45px;
-  text-align: left;
+  text-align: center;
+}
+
+#lift-logo {
+  font-size: smaller;
+}
+#lift-logo img {
+  width: 70px;
 }
 
 #joe-barnes .name {
@@ -774,6 +781,9 @@ a:focus {
 #joe-barnes h1 {
   font-weight: bold;
   font-size: 40px;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 0;
 }
 
 #joe-barnes h2 {

@@ -152,15 +152,21 @@
 <div id="impress" ng-app="ReactiveApp">
   <!--1024x768-->
 
-  <div id="js-logo" class="visible" data-x="-2300" data-z="350" data-y="-250">
+  <div id="js-logo" class="visible" data-x="-2300" data-y="-250" data-z="350">
+  </div>
+
+  <div id="lift-logo" class="visible" data-x="-2000" data-y="250" data-z="350">
+    <a href="http://liftweb.net"><div>Powered by</div>
+    <img src="img/liftweb-logo-single-small2.png"></a>
   </div>
 
   <div id="title" class="step" data-x="-2000">
     <h1>Reactive Programming Patterns</h1>
     <h1>in JavaScript</h1>
+    <div class="follow">Follow along! http://<span data-lift="Host">localhost</span>:8080</div>
   </div>
 
-  <div id="joe-barnes" class="step" data-x="-1350" data-y="230" data-z="300">
+  <div id="joe-barnes" class="step" data-x="-1320" data-y="300" data-z="300">
     <div class="name">
       <h1>Joe Barnes</h1>
       <h2><i><a href="https://twitter.com/joescii">@joescii</a></i></h2>
@@ -193,7 +199,7 @@
   <div id="manifesto" class="step slide" data-x="-1350" data-y="2000" data-z="300">
     <a href="http://www.reactivemanifesto.org/"> <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src="//d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-blue-right.png"> </a>
     <h1>Reactive Manifesto</h1>
-    <div class="footer">http://www.reactivemanifesto.org/</div>
+    <div class="footer"><a href="http://www.reactivemanifesto.org/">http://www.reactivemanifesto.org/</a></div>
   </div>
 
   <div id="buzz" class="step" data-x="-250" data-y="2000" data-z="300">
@@ -264,7 +270,7 @@
   </div>
 
   <div id="avoid-hell" class="step" data-x="4250" data-y="3000" data-z="300">
-    <div>But we don't want callback hell?</div>
+    <div><i>And</i> we don't want callback hell?</div>
   </div>
 
   <div id="events-stream" class="step" data-x="4250" data-y="3500" data-z="300">
