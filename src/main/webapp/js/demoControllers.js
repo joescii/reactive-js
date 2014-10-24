@@ -106,11 +106,24 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 .factory('WorkersController', ['PromisesController',
   function(ctrl){
-    var construct = function($scope) {
+    const construct = function($scope) {
       ctrl.forScope($scope);
 
       const worker = new Worker('/js/worker.js');
+      worker.onmessage = function(event) {
+        var graph = new Dygraph(document.getElementById("chart"),
+          event.data.data,
+          {
+            labels: event.data.labels,
+            width: 700
+          }
+        );
+      };
       worker.postMessage();
+
+      $scope.onQuote = function() {
+        worker.postMessage($scope.symbol)
+      }
     };
 
     return {
