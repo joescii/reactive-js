@@ -1020,6 +1020,9 @@ h1 {
   padding-bottom: 10px;
 }
 
-.strikethru {
+.present .strikethru {
+  text-decoration: line-through;
+}
+.past .strikethru {
   text-decoration: line-through;
 }
