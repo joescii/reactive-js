@@ -1,6 +1,6 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
-.factory('PromisesController', ['convertedHttp', '$q', function(http, $q) {
+.factory('PromisesController', ['callbackHttp', '$q', function(http, $q) {
   const construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
