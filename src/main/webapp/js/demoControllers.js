@@ -1,6 +1,6 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
-.factory('PromisesController', ['callbackHttp', '$q', function(http, $q) {
+.factory('PromisesController', ['callbackHttp', '$q', '$filter', function(http, $q, $filter) {
   const construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
@@ -10,7 +10,12 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     $scope.currencies = ['USD', 'GBP', 'EUR', 'INR', 'CLP'];
     $scope.currency = 0;
     $scope.graphic = $scope.graphics[0];
-    $scope.quote = 0;
+
+    $scope.setQuote = function(quote) {
+      $scope.quote = $filter('currency')(quote, $scope.graphic);
+    };
+
+    $scope.setQuote(0);
 
     $scope.onQuote = function() {
       $scope.graphic = $scope.graphics[$scope.currency];
@@ -75,8 +80,10 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
           }
         );
       };
+      const symbol = function(){ return $scope.symbol };
 
-      // /history/<query>
+
+      // /history/<symbol>
 
     };
 

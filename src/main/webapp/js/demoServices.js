@@ -1,5 +1,15 @@
 angular.module('DemoServices', [])
 
+.factory('formatter', function(){
+  const monetary = function(n) {
+    return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  };
+
+  return {
+    toCurrency: monetary
+  }
+})
+
 .factory('callbackHttp', ['$rootScope', function($rootScope){
   var httpGet = function (url, success, fail) {
     var request = new XMLHttpRequest();

@@ -1,7 +1,7 @@
 <div ng-controller="PromisesSlide">
   <div ng-controller="StreamsSlide">
     <h1>Joe's Stock Shack</h1>
-    <div>Price: {{graphic}}{{quote}}</div>
+    <div>Price: {{quote}}</div>
     <input class="short" type="text" ng-model="symbol" placeholder="Symbol">
     <select ng-model="shares" ng-options="s for s in sharesChoices"></select>
     <select ng-model="currency" ng-options="i as c for (i, c) in currencies"></select>

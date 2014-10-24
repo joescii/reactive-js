@@ -56,7 +56,6 @@ class Boot {
     JQueryModule.init()
 
     AngularJS.init()
-    Angular.init()
 
     RestfulServices.init()
   }
