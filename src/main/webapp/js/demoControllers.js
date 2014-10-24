@@ -40,6 +40,9 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
       console.log("Shares is "+shares());
       console.log("Currency is "+currency());
 
+      http.get("/history/"+symbol())
+        .then()
+
       $q.all([getQuote(), getExchange()])
         .then(function(both){
           setQuote(both[0] * both[1] * shares())
@@ -100,5 +103,19 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     forScope: construct
   }
 }])
+
+.factory('WorkersController', ['PromisesController',
+  function(ctrl){
+    var construct = function($scope) {
+      ctrl.forScope($scope);
+
+      const worker = new Worker('/js/worker.js');
+      worker.postMessage();
+    };
+
+    return {
+      forScope: construct
+    }
+  }])
 
 ;

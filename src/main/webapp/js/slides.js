@@ -8,6 +8,10 @@ angular.module('Slides', ['DemoControllers'])
   ctrl.forScope($scope);
 }])
 
+.controller('WorkersSlide', ['$scope', 'WorkersController', function($scope, ctrl){
+  ctrl.forScope($scope);
+}])
+
 ;
 
 
