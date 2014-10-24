@@ -17,27 +17,3 @@ const httpGet = function(url) {
   return defer.promise;
 };
 
-const postData = function(data) {
-  postMessage(data);
-  return data;
-};
-
-const log = function(obj){
-  console.log(obj);
-  return obj;
-};
-
-onmessage = function(event) {
-  if(event.data) {
-    httpGet('/history/'+event.data)
-      .then(StockData.parse)
-      .then(StockData.addSmavg)
-      .then(StockData.addEmavg)
-      .then(StockData.addLinearReg)
-  //  .then(log)
-      .then(postData)
-      .catch(function (status) {
-        console.log('Errored with status ' + status);
-      });
-  }
-};

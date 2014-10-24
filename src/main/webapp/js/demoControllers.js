@@ -28,34 +28,9 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     // /exchange/<currency>
     // /convert/<currency>/<usd>
 
-    const getQuote = function(){ return http.get("/quote/"+symbol()) };
-    const getExchange = function(){ return http.get("/exchange/"+currency()) };
-    const multiplyIt = function(v){ return v * shares() };
-    const convertIt = function(usd){ return http.get("/convert/"+currency()+"/"+usd) };
-    const setQuote = function(q){ $scope.quote = q };
-    const logIt = function(err){ console.log(err) };
-
     const doQuote = function() {
-      console.log("Symbol is "+symbol());
-      console.log("Shares is "+shares());
-      console.log("Currency is "+currency());
-
-      http.get("/history/"+symbol())
-        .then()
-
-      $q.all([getQuote(), getExchange()])
-        .then(function(both){
-          setQuote(both[0] * both[1] * shares())
-        })
-        .catch(logIt);
-
-      // I promise it can be better. :)
-//      getQuote()
-//        .then(multiplyIt)
-//        .then(convertIt)
-//        .then(setQuote)
-//        .catch(logIt)
-    };
+      $scope.quote = "Implement me!";
+    }
 
   };
 
@@ -79,24 +54,6 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
     // /suggest/<query>
 
-    const toNewValue = function(event) { return event.newValue };
-    const isDefined = function(v){ return v };
-    const longerThan2 = function(text){ return text.length > 2 };
-    const getSuggestions = function(text){
-      http.get("/suggest/"+encodeURIComponent(text))
-        .then(function(suggestions) {
-          $scope.suggestions = suggestions;
-        })
-    };
-
-    observe($scope, 'symSearch')
-      .map(toNewValue)
-      .filter(isDefined)
-      .filter(longerThan2)
-      .throttle(500)
-      .distinctUntilChanged()
-      .subscribe(getSuggestions);
-
   };
 
   return {
@@ -119,17 +76,8 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
         );
       };
 
-      $scope.onQuote = function() {
-        http.get('/history/'+$scope.symbol)
-          .then(StockData.parse)
-          .then(StockData.addSmavg)
-          .then(StockData.addEmavg)
-          .then(StockData.addLinearReg)
-          .then(updateGraph)
-          .catch(function (err) {
-            console.log(err)
-          });
-      }
+      // /history/<query>
+
     };
 
     return {
