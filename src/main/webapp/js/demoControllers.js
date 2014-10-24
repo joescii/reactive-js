@@ -104,25 +104,31 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
   }
 }])
 
-.factory('WorkersController', ['PromisesController',
-  function(ctrl){
+.factory('WorkersController', ['PromisesController', 'promiseHttp',
+  function(ctrl, http){
     const construct = function($scope) {
       ctrl.forScope($scope);
 
-      const worker = new Worker('/js/worker.js');
-      worker.onmessage = function(event) {
+      const updateGraph = function(data) {
         var graph = new Dygraph(document.getElementById("chart"),
-          event.data.data,
+          data.data,
           {
-            labels: event.data.labels,
+            labels: data.labels,
             width: 700
           }
         );
       };
-      worker.postMessage();
 
       $scope.onQuote = function() {
-        worker.postMessage($scope.symbol)
+        http.get('/history/'+$scope.symbol)
+          .then(StockData.parse)
+          .then(StockData.addSmavg)
+          .then(StockData.addEmavg)
+          .then(StockData.addLinearReg)
+          .then(updateGraph)
+          .catch(function (err) {
+            console.log(err)
+          });
       }
     };
 
