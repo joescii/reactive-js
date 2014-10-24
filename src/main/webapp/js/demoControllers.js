@@ -1,7 +1,7 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 .factory('PromisesController', ['convertedHttp', '$q', function(http, $q) {
-  var construct = function($scope) {
+  const construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
     $scope.sharesChoices = [1,2,3,4,5,6,7,8,9,10];
@@ -41,24 +41,24 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 .factory('StreamsController', ['PromisesController', 'observeOnScope', 'promiseHttp',
   function(ctrl, observe, http){
-  var construct = function($scope){
-    ctrl.forScope($scope);
-    $scope.symbol = "";
+    const construct = function($scope){
+      ctrl.forScope($scope);
+      $scope.symbol = "";
 
-    // Click handler
-    $scope.selectSuggestion = function(index) {
-      $scope.symbol = $scope.suggestions[index].symbol;
+      // Click handler
+      $scope.selectSuggestion = function(index) {
+        $scope.symbol = $scope.suggestions[index].symbol;
+      };
+
+
+
+      // /suggest/<query>
+
     };
 
-
-
-    // /suggest/<query>
-
-  };
-
-  return {
-    forScope: construct
-  }
+    return {
+      forScope: construct
+    }
 }])
 
 .factory('WorkersController', ['PromisesController', 'promiseHttp',
