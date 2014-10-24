@@ -25,8 +25,8 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     const currency = function(){ return $scope.currencies[$scope.currency] };
 
     // /quote/<symbol>
-    // /exchange/<currency>
     // /convert/<currency>/<usd>
+    // /exchange/<currency>
 
     const doQuote = function() {
       $scope.quote = "Implement me!";
