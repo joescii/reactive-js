@@ -112,7 +112,7 @@ var TA = {
 //        retVal.reverse();
 //        return retVal;
 //    },
-    LinearReg: function(series, period) {
+    LinearReg: function(series, period, callback) {
         var retVal = [];
         var _src = ([]).concat(series);
         _src.reverse();
@@ -131,7 +131,9 @@ var TA = {
                 sum = TA.Sum(_src.slice(0, i + 1).reverse(), period)[0];
                 slope = (period * sumXY - sumX * sum) / divisor;
                 intercept = (sum - slope * sumX) / period;
-                retVal.push(intercept + slope * (period - 1));
+                var result = intercept + slope * (period - 1);
+                retVal.push(result);
+                if(typeof(callback) == "function") callback([result, len - 1 - i]);
             } else {
                 retVal.push(null);
             }
