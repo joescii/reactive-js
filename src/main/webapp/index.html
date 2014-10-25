@@ -184,7 +184,7 @@
     <ol>
       <li>Promises (aka Futures)</li>
       <li>Streams</li>
-      <li>Web Workers (aka Actors)</li>
+      <li>Web Workers (Actors for the browser)</li>
     </ol>
   </div>
 
@@ -313,8 +313,30 @@
     <div data-lift="embed?what=workers"></div>
   </div>
 
-  <div id="thank-you" class="step" data-x="-3600" data-y="-450">
+  <div id="deep-copy" class="step" data-x="-250" data-y="5000" data-rotate="90">
+    <div>Messages are deep-copied to avoid concurrency concerns</div>
+  </div>
+
+  <div id="transferable-objects" class="step" data-x="-1250" data-y="5000" data-rotate="90">
+    <div>Chrome & Firefox provide <em>transferable objects</em>. Like pass by reference.</div>
+  </div>
+
+  <div id="actors" class="step" data-x="-1250" data-y="6000">
+    <div>Web Workers are an implementation of the more general concept known as the <em>Actor Model</em> for concurrency.</div>
+  </div>
+
+  <div id="recap" class="step" data-x="-2250" data-y="6000">
+    Recap:
+    <ol>
+      <li>Promises: Composable handling of callbacks (pull)</li>
+      <li>Streams: Composable handling of events (push)</li>
+      <li>Web Workers (actors): concurrency in the browser</li>
+    </ol>
+  </div>
+
+  <div id="thank-you" class="step" data-x="0" data-y="3000" data-z="2000">
     <div>Thank you!</div>
+    <div>Questions, comments, concerns?</div>
     <div>Please fill out the feedback!</div>
     <div>Presentation <a href="https://github.com/joescii/reactive-js">source</a></div>
   </div>
