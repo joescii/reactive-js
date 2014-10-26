@@ -1,5 +1,6 @@
 console.devmode.log
 project/project/
 project/target/
+project/*.jar
 target/
 .idea/
