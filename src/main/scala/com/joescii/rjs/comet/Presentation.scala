@@ -23,6 +23,8 @@ class PresentationComet extends CometActor with CometListener {
   override def registerWith = Presentation
 
   override def lowPriority = {
-    case id:String => partialUpdate(Call("window.impress().goto", id))
+    case id:String => partialUpdate(
+      Call("window.Presentation.goto", id)
+    )
   }
 }
