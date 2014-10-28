@@ -379,7 +379,7 @@
 <script data-lift="Presenter"></script>
 <script data-lift="Host.ifLocal" src="js/impress-presenter.js"></script>
 <script>impress().init();</script>
-
+<div data-lift="Host.ifNotLocal"><div data-lift="comet?type=PresentationComet"></div> </div>
 <!--
     
     The `impress()` function also gives you access to the API that controls the presentation.
