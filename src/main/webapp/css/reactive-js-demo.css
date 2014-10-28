@@ -1031,7 +1031,7 @@ h1 {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 112px;
+  width: 168px;
   height: 56px;
   display: block;
   border: thin;
@@ -1049,31 +1049,35 @@ h1 {
   background-size: 264px 154px;
   margin: 3px;
   cursor: pointer;
+  float: left;
 }
 
 #slide-controls .back {
   background-position: -214px 50px;
-  float: left;
 }
-
 #slide-controls .back.enabled {
   background-position: -214px 0;
 }
-
 #slide-controls .back.enabled:active {
   background-position: -214px -52px;
 }
 
 #slide-controls .pause {
   background-position: 0 50px;
-  float: right;
 }
-
 #slide-controls .pause.enabled {
   background-position: 0 0px;
 }
-
 #slide-controls .pause.enabled:active {
   background-position: 0 -52px;
 }
 
+#slide-controls .forward {
+  background-position: -160px 50px;
+}
+#slide-controls .forward.enabled {
+  background-position: -160px 0px;
+}
+#slide-controls .forward.enabled:active {
+  background-position: -160px -52px;
+}
