@@ -39,14 +39,16 @@
           case 33: // pg up
 //          case 37: // left
 //          case 38: // up
-            api.prev();
+            var id = api.prev().id;
+            PresenterApi.goto(id);
             break;
 //          case 9:  // tab
 //          case 32: // space
           case 34: // pg down
 //          case 39: // right
 //          case 40: // down
-            api.next();
+            var id = api.next().id;
+            PresenterApi.goto(id);
             break;
         }
 

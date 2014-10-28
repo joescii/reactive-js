@@ -229,7 +229,8 @@
         init: empty,
         goto: empty,
         prev: empty,
-        next: empty
+        next: empty,
+        ids:  []
       };
     }
 
@@ -251,6 +252,9 @@
 
     // array of step elements
     var steps = null;
+
+    // array of step ids
+    var stepIds = null;
 
     // array of elements which are just visible
     var visibles = null;
@@ -422,8 +426,9 @@
       // get and init steps
       steps = $$(".step", root);
       steps.forEach(initStep);
+      stepIds = steps.map(function(e){ return e.id });
 
-      // get and init steps
+      // get and init visibles
       visibles = $$(".visible", root);
       visibles.forEach(initVisible);
 
@@ -672,7 +677,8 @@
       init: init,
       goto: goto,
       next: next,
-      prev: prev
+      prev: prev,
+      ids:  stepIds
     });
 
   };

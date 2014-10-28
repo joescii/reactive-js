@@ -8,7 +8,7 @@ import net.liftweb.util.{ClearNodes, PassThru}
 object Host {
   def render = "*" #> InetAddress.getLocalHost.getHostAddress
 
-  private def isLocal = S.request.map { req =>
+  def isLocal = S.request.map { req =>
     req.hostName == "localhost"
   }.openOr(false)
 
