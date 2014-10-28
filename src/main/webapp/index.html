@@ -346,7 +346,7 @@
   <!--</div>-->
 
 </div>
-<div data-lift="embed?what=slide-controls"></div>
+<div data-lift="Host.ifNotLocal"><div data-lift="embed?what=slide-controls"></div></div>
 
 <!--
     
@@ -375,6 +375,8 @@
 <script src="js/reactive.js"></script>
 <script src="js/slides.js"></script>
 <script src="js/impress.js"></script>
+<script data-lift="Host.ifNotLocal" src="js/impress-client.js"></script>
+<script data-lift="Host.ifLocal" src="js/impress-presenter.js"></script>
 <script>impress().init();</script>
 
 <!--
