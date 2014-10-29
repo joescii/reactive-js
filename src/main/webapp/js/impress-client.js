@@ -52,17 +52,21 @@
     presentation.local = window.impress().ids[index];
   };
 
-  document.getElementById("slide-play-pause").addEventListener('click', function(event){
+  $("#slide-play-pause").click(function(){
     presentation.togglePause();
     presentation.updateWidgets();
   });
-  document.getElementById("slide-back").addEventListener('click', function(event){
-    presentation.toggleBack();
-    presentation.updateWidgets();
+  $("#slide-back").click(function(){
+    if($("#slide-back").hasClass('enabled')) {
+      presentation.toggleBack();
+      presentation.updateWidgets();
+    }
   });
-  document.getElementById("slide-forward").addEventListener('click', function(event){
-    presentation.toggleForward();
-    presentation.updateWidgets();
+  $("#slide-forward").click(function(){
+    if($("#slide-forward").hasClass('enabled')) {
+      presentation.toggleForward();
+      presentation.updateWidgets();
+    }
   });
 
   // Updates the widgets to match the state of presentation and impress model data
@@ -89,6 +93,14 @@
 
     window.impress().goto(presentation.local);
   };
+
+  presentation.init = function() {
+    if(typeof window.PresentationState !== 'undefined') {
+      presentation.current = window.PresentationState.initMe();
+    }
+  };
+
+  $(document).ready(presentation.init);
 
   window.Presentation = presentation;
 

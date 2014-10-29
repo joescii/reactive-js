@@ -9,11 +9,14 @@ import JE._
 import scala.xml.NodeSeq
 
 object Presentation extends LiftActor with ListenerManager {
+  object Ask
+
   var currentStep:String = "title"
 
   def createUpdate = currentStep
 
   override def lowPriority = {
+    case Ask => reply(currentStep)
     case id:String => currentStep = id; updateListeners()
   }
 }
