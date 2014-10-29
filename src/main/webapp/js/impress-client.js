@@ -17,26 +17,60 @@
   presentation.goto = function(id) {
     presentation.current = id;
     if(!presentation.isPaused) {
-      window.impress().goto(id);
       presentation.local = id;
     }
+    presentation.updateWidgets();
   };
 
   // Pauses the presentation
-  presentation.togglePause = function() {
-    if(presentation.isPaused) {
+  presentation.togglePause = function(pauseIt) {
+    var newState;
+    if(typeof pauseIt !== 'boolean')
+      newState = !presentation.isPaused;
+    else
+      newState = pauseIt;
+
+    if(!newState) { // un-pausing
       presentation.local = presentation.current;
-      window.impress().goto(presentation.current);
     }
 
-    presentation.isPaused = !presentation.isPaused;
-    $("#slide-play-pause").toggleClass("pause");
-    $("#slide-play-pause").toggleClass("play");
+    presentation.isPaused = newState;
+  };
+
+  // Goes back one slide
+  presentation.toggleBack = function() {
+    presentation.togglePause(true);
+    var index = window.impress().ids.indexOf(presentation.local) - 1;
+    presentation.local = window.impress().ids[index];
   };
 
   document.getElementById("slide-play-pause").addEventListener('click', function(event){
     presentation.togglePause();
+    presentation.updateWidgets();
   });
+  document.getElementById("slide-back").addEventListener('click', function(event){
+    presentation.toggleBack();
+    presentation.updateWidgets();
+  });
+
+  // Updates the widgets to match the state of presentation and impress model data
+  presentation.updateWidgets = function() {
+    if(presentation.isPaused) {
+      $("#slide-play-pause").removeClass("pause");
+      $("#slide-play-pause").addClass("play");
+    } else {
+      $("#slide-play-pause").addClass("pause");
+      $("#slide-play-pause").removeClass("play");
+    }
+
+    if(window.impress().ids.indexOf(presentation.local) === 0) {
+      $("#slide-back").removeClass("enabled");
+    } else {
+      $("#slide-back").addClass("enabled");
+    }
+
+    window.impress().goto(presentation.local);
+  };
 
   window.Presentation = presentation;
 

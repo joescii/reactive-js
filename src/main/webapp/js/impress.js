@@ -254,7 +254,7 @@
     var steps = null;
 
     // array of step ids
-    var stepIds = null;
+    var stepIds = [];
 
     // array of elements which are just visible
     var visibles = null;
@@ -416,7 +416,7 @@
       // get and init steps
       steps = $$(".step", root);
       steps.forEach(initStep);
-      stepIds = steps.map(function(e){ return e.id });
+      steps.forEach(function(e){ stepIds.push(e.id) });
 
       // get and init visibles
       visibles = $$(".visible", root);
