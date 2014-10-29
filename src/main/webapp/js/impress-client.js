@@ -13,6 +13,8 @@
   // The state of our pause button
   presentation.isPaused = false;
 
+  var indexOfSlide = function(id) { return window.impress().ids.indexOf(id) };
+
   // Called by server to go to a given slide
   presentation.goto = function(id) {
     presentation.current = id;
@@ -40,7 +42,13 @@
   // Goes back one slide
   presentation.toggleBack = function() {
     presentation.togglePause(true);
-    var index = window.impress().ids.indexOf(presentation.local) - 1;
+    var index = indexOfSlide(presentation.local) - 1;
+    presentation.local = window.impress().ids[index];
+  };
+
+  // Goes forward one slide
+  presentation.toggleForward = function() {
+    var index = indexOfSlide(presentation.local) + 1;
     presentation.local = window.impress().ids[index];
   };
 
@@ -50,6 +58,10 @@
   });
   document.getElementById("slide-back").addEventListener('click', function(event){
     presentation.toggleBack();
+    presentation.updateWidgets();
+  });
+  document.getElementById("slide-forward").addEventListener('click', function(event){
+    presentation.toggleForward();
     presentation.updateWidgets();
   });
 
@@ -63,10 +75,16 @@
       $("#slide-play-pause").removeClass("play");
     }
 
-    if(window.impress().ids.indexOf(presentation.local) === 0) {
+    if(indexOfSlide(presentation.local) === 0) {
       $("#slide-back").removeClass("enabled");
     } else {
       $("#slide-back").addClass("enabled");
+    }
+
+    if(presentation.local === presentation.current) {
+      $("#slide-forward").removeClass("enabled");
+    } else {
+      $("#slide-forward").addClass("enabled");
     }
 
     window.impress().goto(presentation.local);
