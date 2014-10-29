@@ -1,7 +1,7 @@
 angular.module('DemoServices', [])
 
 .factory('formatter', function(){
-  const monetary = function(n) {
+  var monetary = function(n) {
     return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   };
 
@@ -45,8 +45,8 @@ angular.module('DemoServices', [])
 
 .factory('convertedHttp', ['callbackHttp', '$q',
   function(http, $q){
-    const httpGet = function(url){
-      const defer = $q.defer();
+    var httpGet = function(url){
+      var defer = $q.defer();
 
       http.get(url,function(response){
         defer.resolve(response);

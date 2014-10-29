@@ -1,7 +1,7 @@
-const StockData = {
+var StockData = {
   parse: function(csv) {
-    const lines = csv.split(/\n/);
-    const data = [];
+    var lines = csv.split(/\n/);
+    var data = [];
     for(var i = lines.length-2; i > 0; i--){
       var arr = lines[i].split(/,/);
       var datum = [
@@ -22,9 +22,9 @@ const StockData = {
   },
 
   addCalculation: function(data, calc, label) {
-    const values = data.data.map(function(datum) { return datum[1] });
-    const calculated = calc(values);
-    const dataArr = [];
+    var values = data.data.map(function(datum) { return datum[1] });
+    var calculated = calc(values);
+    var dataArr = [];
     for(var i = 0; i < data.data.length; i++) {
       dataArr.push(data.data[i].concat(calculated[i]))
     }
@@ -35,17 +35,17 @@ const StockData = {
   },
 
   addSmavg: function(data) {
-    const fn = function(values) { return TA.SMAverage(values, 100) };
+    var fn = function(values) { return TA.SMAverage(values, 100) };
     return StockData.addCalculation(data, fn, "SMA")
   },
 
   addEmavg: function(data) {
-    const fn = function(values) { return TA.EMAverage(values, 100) };
+    var fn = function(values) { return TA.EMAverage(values, 100) };
     return StockData.addCalculation(data, fn, "EMA")
   },
 
   addLinearReg: function(data) {
-    const fn = function(values) { return TA.LinearReg(values, 20) };
+    var fn = function(values) { return TA.LinearReg(values, 20) };
     return StockData.addCalculation(data, fn, "LinearReg");
   }
 

@@ -1,7 +1,7 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 .factory('PromisesController', ['callbackHttp', '$q', '$filter', function(http, $q, $filter) {
-  const construct = function($scope) {
+  var construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
     $scope.sharesChoices = [1,2,3,4,5,6,7,8,9,10];
@@ -25,15 +25,15 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 
 
-    const symbol = function(){ return $scope.symbol };
-    const shares = function(){ return $scope.shares };
-    const currency = function(){ return $scope.currencies[$scope.currency] };
+    var symbol = function(){ return $scope.symbol };
+    var shares = function(){ return $scope.shares };
+    var currency = function(){ return $scope.currencies[$scope.currency] };
 
     // /quote/<symbol>
     // /convert/<currency>/<usd>
     // /exchange/<currency>
 
-    const doQuote = function() {
+    var doQuote = function() {
       $scope.quote = "Implement me!";
     }
 
@@ -46,7 +46,7 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 .factory('StreamsController', ['PromisesController', 'observeOnScope', 'promiseHttp',
   function(ctrl, observe, http){
-    const construct = function($scope){
+    var construct = function($scope){
       ctrl.forScope($scope);
       $scope.symbol = "";
 
@@ -68,10 +68,10 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
 .factory('WorkersController', ['PromisesController', 'promiseHttp',
   function(ctrl, http){
-    const construct = function($scope) {
+    var construct = function($scope) {
       ctrl.forScope($scope);
 
-      const updateGraph = function(data) {
+      var updateGraph = function(data) {
         var graph = new Dygraph(document.getElementById("chart"),
           data.data,
           {
@@ -80,7 +80,7 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
           }
         );
       };
-      const symbol = function(){ return $scope.symbol };
+      var symbol = function(){ return $scope.symbol };
 
 
       // /history/<symbol>
