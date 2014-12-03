@@ -94,6 +94,23 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
 
       // /suggest/<query>
 
+      var toNewValue = function(event) { return event.newValue; };
+      var isDefined = function(v) { return v };
+      var longerThan2 = function(str) { return str.length > 2 };
+      var getSuggestions = function(query){
+        http.get("/suggest/"+encodeURIComponent(query))
+          .then(function(suggestions){
+            $scope.suggestions = suggestions;
+          });
+      };
+
+      observe($scope, 'symSearch')
+        .map(toNewValue)
+        .filter(isDefined)
+        .filter(longerThan2)
+        .throttle(750)
+        .distinctUntilChanged()
+        .subscribe(getSuggestions);
     };
 
     return {
