@@ -1,6 +1,6 @@
 angular.module('DemoControllers', ['DemoServices', 'rx'])
 
-.factory('PromisesController', ['callbackHttp', '$q', '$filter', function(http, $q, $filter) {
+.factory('PromisesController', ['promiseHttp', '$q', '$filter', function(http, $q, $filter) {
   var construct = function($scope) {
     $scope.symbolChoices = ['AAPL', 'AMZN', 'GOOG', 'MENT', 'YHOO'];
     $scope.symbol = $scope.symbolChoices[0];
@@ -33,8 +33,43 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
     // /convert/<currency>/<usd>
     // /exchange/<currency>
 
+    var fetchQuote = function(){
+      return http.get('/quote/'+symbol());
+    };
+    var fetchExchange = function(){
+      return http.get('/exchange/'+currency());
+    };
+    var fetchBoth = function(){
+      return $q.all([fetchQuote(), fetchExchange()])
+    };
+    var multiplyIt = function(quote){
+      return quote * shares();
+    };
+    var multiplyThem = function(arr){
+      return arr[0] * arr[1];
+    };
+
+    var convertIt = function(product){
+      return http.get('/convert/'+currency()+'/'+product);
+    };
+    var setIt = function(total){
+      $scope.setQuote(total);
+      return total;
+    };
+    var logIt = function(it){ console.log(it); return it };
+
     var doQuote = function() {
-      $scope.quote = "Implement me!";
+//      fetchQuote()
+//        .then(multiplyIt)
+//        .then(logIt)
+//        .then(convertIt)
+//        .then(setIt)
+//        ;
+      fetchBoth()
+        .then(logIt)
+        .then(multiplyThem)
+        .then(multiplyIt)
+        .then(setIt)
     }
 
   };
