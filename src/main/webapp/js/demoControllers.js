@@ -134,9 +134,16 @@ angular.module('DemoControllers', ['DemoServices', 'rx'])
       };
       var symbol = function(){ return $scope.symbol };
 
-
       // /history/<symbol>
 
+      var worker = new Worker('/js/worker.js');
+      $scope.onChart = function() {
+        worker.postMessage(symbol());
+      };
+
+      worker.addEventListener('message', function(msg){
+        updateGraph(msg.data);
+      });
     };
 
     return {

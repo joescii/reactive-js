@@ -19,3 +19,14 @@ var http = {
   }
 };
 
+var logIt = function(it){ console.log(it); return it; };
+
+onmessage = function(event) {
+  http.get('/history/'+event.data)
+    .then(StockData.parse)
+    .then(StockData.addSmavg)
+    .then(StockData.addEmavg)
+    .then(StockData.addLinearReg)
+    .then(postMessage)
+    .catch(logIt);
+};
